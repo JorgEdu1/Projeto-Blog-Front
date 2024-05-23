@@ -4,20 +4,23 @@ import GlobalStyle, { ContainerGlobal } from './shared/styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { createTheme } from './shared/styles/createThemes.js'
 import { AuthProvider } from './hooks/auth.jsx'
+import { ToastProvider } from './hooks/toast.jsx'
 
 function App() {
   return (
     <>
-      <AuthProvider>
-        <ThemeProvider theme={createTheme('dark')}>
-          <ContainerGlobal>
-            <BrowserRouter>
-              <Router />
-            </BrowserRouter>
-            <GlobalStyle />
-          </ContainerGlobal>
-        </ThemeProvider>
-      </AuthProvider>
+      <ThemeProvider theme={createTheme('dark')}>
+        <AuthProvider>
+          <ToastProvider>
+            <ContainerGlobal>
+              <BrowserRouter>
+                <Router />
+              </BrowserRouter>
+              <GlobalStyle />
+            </ContainerGlobal>
+          </ToastProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </>
   )
 }

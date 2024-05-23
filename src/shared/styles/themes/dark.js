@@ -5,5 +5,10 @@ export default {
     BACKGROUND: '#101010',
     OUTLINE: '#333',
     TEXT: '#757575',
+    TOAST: {
+      WARNING: '#ffcc00',
+      SUCCESS: '#00cc00',
+      ERROR: '#cc0000',
+    },
   },
 }

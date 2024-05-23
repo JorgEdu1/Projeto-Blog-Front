@@ -20,4 +20,19 @@ export class LoginApi {
       return null
     }
   }
+
+  static async register(username, email, password) {
+    try {
+      const response = await api.post('/register', {
+        username,
+        email,
+        password,
+        role: 'reader',
+      })
+      return response.data
+    } catch (error) {
+      console.error('Error:', error)
+      return null
+    }
+  }
 }

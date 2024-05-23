@@ -20,4 +20,14 @@ export class LoginService {
       return false
     }
   }
+
+  static async register(username, email, password) {
+    try {
+      const response = await LoginApi.register(username, email, password)
+      return response
+    } catch (error) {
+      console.error('Error:', error)
+      return false
+    }
+  }
 }
