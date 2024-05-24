@@ -3,20 +3,23 @@ import LoginPage from '../pages/Login'
 import RegisterPage from '../pages/Register'
 import Teste from '../pages/Teste'
 import ProtectedLayout from '../layouts/ProtectedLayout'
+import PageBase from './PageBase'
 
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route
-        path="/teste"
-        element={
-          <ProtectedLayout>
-            <Teste />
-          </ProtectedLayout>
-        }
-      />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
+      <Route path="/" element={<PageBase />}>
+        <Route
+          path="teste"
+          element={
+            <ProtectedLayout>
+              <Teste />
+            </ProtectedLayout>
+          }
+        />
+      </Route>
     </Routes>
   )
 }
