@@ -10,16 +10,16 @@ function App() {
   return (
     <>
       <ThemeProvider theme={createTheme('dark')}>
-        <AuthProvider>
-          <ToastProvider>
+        <ToastProvider>
+          <AuthProvider>
             <ContainerGlobal>
               <BrowserRouter>
                 <Router />
               </BrowserRouter>
               <GlobalStyle />
             </ContainerGlobal>
-          </ToastProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </ToastProvider>
       </ThemeProvider>
     </>
   )

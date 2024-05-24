@@ -85,7 +85,7 @@ const RegisterPage = () => {
             <ButtonSection>
               <Button type="submit">Registrar</Button>
               <Button type="button" onClick={() => Navigate('/login')}>
-                Logar
+                Login
               </Button>
             </ButtonSection>
           </LoginSection>

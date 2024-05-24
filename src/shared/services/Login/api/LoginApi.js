@@ -7,7 +7,7 @@ export class LoginApi {
       return response.data
     } catch (error) {
       console.error('Error:', error)
-      return null
+      return error
     }
   }
 

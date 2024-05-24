@@ -73,9 +73,9 @@ const LoginPage = () => {
               {errors.password && <Error>{errors.password.message}</Error>}
             </ErrorContainer>
             <ButtonSection>
-              <Button type="submit">Login</Button>
+              <Button type="submit">Logar</Button>
               <Button type="button" onClick={() => Navigate('/register')}>
-                Registrar
+                Registro
               </Button>
             </ButtonSection>
           </LoginSection>

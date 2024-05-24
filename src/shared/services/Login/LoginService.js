@@ -7,7 +7,7 @@ export class LoginService {
       return response
     } catch (error) {
       console.error('Error:', error)
-      return false
+      return error
     }
   }
 

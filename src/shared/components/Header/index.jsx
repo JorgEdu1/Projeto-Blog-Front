@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <Container>
       <LogoSection>
-        <Logo>Blog</Logo>
+        <Logo>{'</Blog/>'}</Logo>
         <Item>Home</Item>
         <Item>Sobre</Item>
       </LogoSection>

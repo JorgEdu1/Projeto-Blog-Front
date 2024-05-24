@@ -1,10 +1,12 @@
 import { useEffect, useState, createContext, useContext } from 'react'
 import { api } from '../shared/services/api/axios'
 import { LoginService } from '../shared/services/Login/LoginService'
+import { useToast } from './toast'
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
+  const { addToast } = useToast()
   const [usuario, setUsuario] = useState(null)
   const [loading, setLoading] = useState(true)
   const [isAutenticado, setIsAutenticado] = useState(false)
@@ -24,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       }
       return true
     } catch (error) {
-      console.error('Error:', error)
+      console.log('Error:', error)
       return false
     }
   }
@@ -48,17 +50,28 @@ export const AuthProvider = ({ children }) => {
   const login = async (username, password) => {
     try {
       const response = await LoginService.login(username, password)
-      const user = {
-        username: response.username,
-      }
-      const token = response.token
-      setUsuario(user)
-      setIsAutenticado(true)
-      localStorage.setItem('user', JSON.stringify(user))
-      localStorage.setItem('token', token)
-      api.defaults.headers.common.authorization = `${token}`
+      if (response.token === undefined) {
+        if (response.response.status !== 200) {
+          addToast({
+            type: 'error',
+            title: 'Erro',
+            description: response.response.data.error,
+          })
+          return false
+        }
+      } else {
+        const user = {
+          username: response.username,
+        }
+        const token = response.token
+        setUsuario(user)
+        setIsAutenticado(true)
+        localStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('token', token)
+        api.defaults.headers.common.authorization = `${token}`
 
-      return true
+        return true
+      }
     } catch (error) {
       console.log('Error:', error)
       return false
